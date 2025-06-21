@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rag/theme/colors.dart';
+import 'package:flutter_rag/widgets/side_bar_button.dart';
 
 class SideBar extends StatefulWidget {
   const SideBar({super.key});
@@ -18,74 +19,53 @@ class _SideBarState extends State<SideBar> {
       width: isCollapsed ? 64 : 128,
       color: AppColors.sideNav,
       child: Column(
-        crossAxisAlignment: isCollapsed ? CrossAxisAlignment.center : CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 16),
-
           Icon(
             Icons.auto_awesome_mosaic,
             color: AppColors.whiteColor,
-            size: 30,
+            size: isCollapsed ? 30 : 55,
           ),
-
-          const SizedBox(height: 24),
-
-          Row(
-            mainAxisAlignment: isCollapsed ? MainAxisAlignment.center : MainAxisAlignment.start,
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-                child: Icon(
-                  Icons.add,
-                  color: AppColors.iconGrey,
-                  size: 22,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: isCollapsed ? CrossAxisAlignment.center : CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 24),
+            
+                SideBarButton(
+                  isCollapsed: isCollapsed, 
+                  icon: Icons.add, 
+                  text: "Home"
                 ),
-              ),
-              isCollapsed 
-              ? const SizedBox() 
-              : Text(
-                  "Home",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20
-                  ),
-                )
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-            child: Icon(
-              Icons.search,
-              color: AppColors.iconGrey,
-              size: 22,
+            
+                SideBarButton(
+                  isCollapsed: isCollapsed, 
+                  icon: Icons.search, 
+                  text: "Search"
+                ),
+                
+                SideBarButton(
+                  isCollapsed: isCollapsed, 
+                  icon: Icons.language, 
+                  text: "Spaces"
+                ),
+            
+                SideBarButton(
+                  isCollapsed: isCollapsed, 
+                  icon: Icons.auto_awesome, 
+                  text: "Discover"
+                ),
+            
+                SideBarButton(
+                  isCollapsed: isCollapsed, 
+                  icon: Icons.cloud_outlined, 
+                  text: "Library"
+                ),
+            
+                const Spacer(),
+              ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-            child: Icon(
-              Icons.language,
-              color: AppColors.iconGrey,
-              size: 22,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-            child: Icon(
-              Icons.auto_awesome,
-              color: AppColors.iconGrey,
-              size: 22,
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(vertical: 14, horizontal: 10),
-            child: Icon(
-              Icons.cloud_outlined,
-              color: AppColors.iconGrey,
-              size: 22,
-            ),
-          ),
-
-          const Spacer(),
           GestureDetector(
             onTap: () {
               setState(() {
