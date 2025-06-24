@@ -23,5 +23,6 @@ class LLMService:
       Ensure you answer the query asked by the user. Do not use your own knowledge base to give the answer, unless it is absolutely necessary.
     """
 
-    response = self.model.generate_content(full_prompt)
-    return response.text
+    response = self.model.generate_content(full_prompt, stream=True)
+    for chunk in response:
+      yield chunk.text
