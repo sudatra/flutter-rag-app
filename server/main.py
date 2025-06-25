@@ -14,6 +14,7 @@ llm_service = LLMService()
 @app.websocket("/ws/chat")
 async def websocket_chat_endpoint(websocket: WebSocket):
   await websocket.accept()
+  print("Web Socket connection accepted...")
 
   try:
     await asyncio.sleep(0.1)
