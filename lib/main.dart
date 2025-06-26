@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_rag/pages/home_page.dart';
+import 'package:flutter_rag/pages/chat_page.dart';
+// import 'package:flutter_rag/pages/home_page.dart';
 import 'package:flutter_rag/theme/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -22,7 +23,9 @@ class MyApp extends StatelessWidget {
           ThemeData.dark().textTheme
         )
       ),
-      home: const HomePage(),
+      home: const ChatPage(
+        question: 'What is Ind vs Eng Score?',
+      ),
     );
   }
 }
